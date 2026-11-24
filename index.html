@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Self-Sensing Compliant Hand</title>
+  <meta name="description" content="A compliant tendon-driven anthropomorphic hand whose series springs act as the sensor for speed-dictated shared force control in VR teleoperation.">
+  <meta property="og:title" content="Self-Sensing Compliant Anthropomorphic Hand for Speed-Dictated Shared Force Control in Teleoperation">
+  <meta property="og:description" content="Compliance as a sensor: the tendon springs of a compliant hand estimate joint angles and finger forces and trigger shared control in VR teleoperation.">
+  <meta property="og:image" content="assets/img/photo_teleop.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">CREATE Lab &middot; EPFL</p>
+    <h1>Self-Sensing Compliant Anthropomorphic Hand for Speed-Dictated Shared Force Control in Teleoperation</h1>
+    <p class="authors">
+      Huijiang Wang<sup>1</sup>, Yu Zhang<sup>1</sup>, Rui Chen<sup>1,2</sup>, Tristan Bonato<sup>1</sup>, Jaemin Eom<sup>1</sup>,
+      Kai Junge<sup>1</sup>, Cheng Pan<sup>1</sup>, Benhui Dai<sup>1</sup>, Yue Xie<sup>3</sup>, Josie Hughes<sup>1</sup>
+    </p>
+    <p class="affil">
+      <sup>1</sup>CREATE Lab, EPFL, Lausanne, Switzerland &nbsp;
+      <sup>2</sup>Institute of Mechanical Intelligence, Sant'Anna School of Advanced Studies (SSSA), Pisa, Italy &nbsp;
+      <sup>3</sup>Department of Computer Science, Loughborough University, UK
+    </p>
+    <nav class="buttons">
+      <a class="btn primary" href="assets/SelfSensingHand_paper.pdf">Paper (PDF)</a>
+      <a class="btn" href="#videos">Videos</a>
+      <a class="btn" href="#figures">Figures</a>
+      <a class="btn" href="#bibtex">BibTeX</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="wrap">
+    <figure class="feature">
+      <img src="assets/img/photo_teleop.jpg" alt="An operator wearing a VR headset teleoperates the compliant robot hand on a UR5 arm, which pours water from a bottle into a cup.">
+      <figcaption>VR teleoperation of the compliant hand with visual feedback only. The tendon springs tell the hand when it touches an object, how firmly the operator wants to grasp, and which fingers it should take over.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap">
+    <h2>Abstract</h2>
+    <p class="lead">
+      In vision-based teleoperation of robotic hands, the operator receives no haptic feedback and therefore struggles to regulate the grasp force, while adding tactile sensors to the fingers increases wiring, cost and integration complexity. Compliant hands offer an alternative, as their mechanical compliance, usually treated only as a passive property for safe and adaptive grasping, can also serve as a source of information. Here, we show that the elastic transmission of a compliant, tendon-driven anthropomorphic hand can itself act as the sensor for shared-control telemanipulation. Series springs in the tendon routing are read by potentiometers in a forearm-mounted motor box, from which the hand estimates its joint states and finger forces without any external sensors. Building on this self-sensing, we develop a contact-aware shared-control framework for VR-based teleoperation. The robot hand is controlled through a mapping from the operator's hand kinematics until a contact is detected proprioceptively. Control then switches to a finger-level force controller whose set point is determined by the operator's grasping speed, and control authority can be allocated to individual fingers. Experiments validate the system's force estimation and increased grasp success rate compared with direct teleoperation for fragile and heavy objects. These results show that compliance can serve not only for passive adaptation but also as an intrinsic sensing resource for physical human&ndash;robot collaboration.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <h2>Highlights</h2>
+    <div class="cards">
+      <article class="card">
+        <img src="assets/img/photo_hand.jpg" alt="The compliant tendon-driven hand.">
+        <div class="card-body">
+          <h3>Compliance as a sensor</h3>
+          <p>Springs in series with the tendons, read by potentiometers in the motor box, give joint angles and finger forces without any sensor on the fingers.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/img/photo_cup.jpg" alt="A firm grasp crushes a fragile plastic cup.">
+        <div class="card-body">
+          <h3>Contact-triggered takeover</h3>
+          <p>A rise of the spring signal marks the contact, and the hand takes over the finger before the operator, who feels nothing, crushes the object.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/img/photo_bottle.jpg" alt="A heavy bottle slips from a gentle grasp.">
+        <div class="card-body">
+          <h3>Speed-dictated grasp force</h3>
+          <p>How fast the operator closes the hand selects a gentle or a firm hold: a slow closure protects a fragile cup, a fast one secures a heavy bottle.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/img/photo_authority.jpg" style="object-fit: contain; background: #fff; padding: 6px 0" alt="The ulnar fingers hold an object while the operator writes with the thumb and index finger.">
+        <div class="card-body">
+          <h3>Finger-level authority</h3>
+          <p>Each finger runs its own state machine, so the hand can hold one object with its ulnar fingers while the operator uses the thumb and index finger for a tool.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="videos">
+    <h2>Videos</h2>
+    <div class="videos">
+      <article class="video">
+        <video controls preload="metadata" playsinline poster="assets/img/poster_video1.jpg">
+          <source src="assets/videos/video1.mp4" type="video/mp4">
+        </video>
+        <h3><span class="tag">1</span> Contact-triggered takeover of a fragile cup</h3>
+        <p>Without shared control, the operator squashes a plastic cup. With shared control, the contact detected on the thumb spring transfers control to the hand, which holds a safe posture while the operator keeps closing.</p>
+      </article>
+      <article class="video">
+        <video controls preload="metadata" playsinline poster="assets/img/poster_video2.jpg">
+          <source src="assets/videos/video2.mp4" type="video/mp4">
+        </video>
+        <h3><span class="tag">2</span> Self-occlusion of the ulnar fingers</h3>
+        <p>When the ring and little fingers are hidden from the headset cameras, their tracking stays flexed, and the robot executes this tracking error.</p>
+      </article>
+      <article class="video">
+        <video controls preload="metadata" playsinline poster="assets/img/poster_video3.jpg">
+          <source src="assets/videos/video3.mp4" type="video/mp4">
+        </video>
+        <h3><span class="tag">3</span> Finger-level allocation of control authority</h3>
+        <p>The ulnar fingers hold a sponge while the thumb and index finger pick up a pen, write, cap the pen, and erase the writing with the retained sponge.</p>
+      </article>
+      <article class="video">
+        <video controls preload="metadata" playsinline poster="assets/img/poster_video4.jpg">
+          <source src="assets/videos/video4.mp4" type="video/mp4">
+        </video>
+        <h3><span class="tag">4</span> Speed-dictated grasping</h3>
+        <p>A fragile cup and a 220&nbsp;g bottle with shared control off and on, the success rates over 20 trials, and a continuous pouring task in which the closing speed selects a gentle or a firm hold.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="figures">
+    <h2>Selected Figures</h2>
+    <div class="gallery">
+      <a href="assets/img/fig_hand.jpg"><img src="assets/img/fig_hand.jpg" alt="Compliant hand and spring sensing unit"><span>Hand and spring sensing unit</span></a>
+      <a href="assets/img/fig_sharedcontrol.jpg"><img src="assets/img/fig_sharedcontrol.jpg" alt="Contact-aware shared control"><span>Contact-aware shared control</span></a>
+      <a href="assets/img/fig_selfsensing.jpg"><img src="assets/img/fig_selfsensing.jpg" alt="Joint-angle and force estimation"><span>Self-sensing results</span></a>
+      <a href="assets/img/fig_fragilecup.jpg"><img src="assets/img/fig_fragilecup.jpg" alt="Fragile-object grasping"><span>Fragile-object grasping</span></a>
+      <a href="assets/img/fig_tooluse.jpg"><img src="assets/img/fig_tooluse.jpg" alt="Concurrent grasping and tool use"><span>Finger-level allocation of authority</span></a>
+      <a href="assets/img/fig_speedgraded.jpg"><img src="assets/img/fig_speedgraded.jpg" alt="Speed-dictated grasping"><span>Speed-dictated grasping</span></a>
+    </div>
+  </section>
+
+  <section class="wrap" id="paper">
+    <h2>Paper</h2>
+    <div class="pdf">
+      <object data="assets/SelfSensingHand_paper.pdf" type="application/pdf">
+        <p>Your browser cannot show the PDF here. <a href="assets/SelfSensingHand_paper.pdf">Download the paper</a>.</p>
+      </object>
+    </div>
+  </section>
+
+  <section class="wrap" id="bibtex">
+    <h2>BibTeX</h2>
+<pre><code>@article{wang2026selfsensing,
+  title   = {Self-Sensing Compliant Anthropomorphic Hand for Speed-Dictated
+             Shared Force Control in Teleoperation},
+  author  = {Wang, Huijiang and Zhang, Yu and Chen, Rui and Bonato, Tristan and
+             Eom, Jaemin and Junge, Kai and Pan, Cheng and Dai, Benhui and
+             Xie, Yue and Hughes, Josie},
+  year    = {2026},
+  note    = {Under review}
+}</code></pre>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>CREATE Lab, &Eacute;cole Polytechnique F&eacute;d&eacute;rale de Lausanne (EPFL).</p>
+  </div>
+</footer>
+
+</body>
+</html>

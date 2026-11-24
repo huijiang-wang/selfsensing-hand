@@ -1,0 +1,99 @@
+:root {
+  --ink: #1f2430;
+  --muted: #5b6270;
+  --bg: #ffffff;
+  --panel: #f5f6f8;
+  --line: #e2e5ea;
+  --blue: rgb(54, 74, 136);
+  --pink: rgb(199, 58, 100);
+  --green: rgb(73, 107, 97);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8eaee;
+    --muted: #a7adb8;
+    --bg: #14161b;
+    --panel: #1d2027;
+    --line: #2c3039;
+    --blue: rgb(138, 162, 196);
+    --pink: rgb(237, 128, 167);
+    --green: rgb(153, 191, 178);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 17px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+section { margin: 0 auto; padding: 36px 20px 28px; }
+h1 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.2; margin: 0.2em 0 0.5em; }
+h2 { font-size: 1.5rem; margin: 0 0 18px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+h3 { font-size: 1.05rem; margin: 10px 0 6px; }
+a { color: var(--blue); }
+img, video { max-width: 100%; display: block; }
+
+/* header */
+.hero { padding: 64px 0 36px; background: var(--panel); border-bottom: 1px solid var(--line); text-align: center; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--pink); font-weight: 700; margin: 0; }
+.authors { font-size: 1.05rem; margin: 0 0 6px; }
+.affil { font-size: 0.85rem; color: var(--muted); margin: 0 0 22px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.btn {
+  display: inline-block; padding: 9px 18px; border-radius: 999px; text-decoration: none; font-weight: 600;
+  border: 1.5px solid var(--blue); color: var(--blue); background: transparent;
+}
+.btn.primary { background: var(--blue); color: #fff; }
+.btn:hover { filter: brightness(1.1); }
+
+/* feature image */
+.feature { margin: 0; }
+.feature img { width: 100%; border-radius: 12px; }
+figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 10px; text-align: center; }
+.lead { font-size: 1.02rem; text-align: justify; hyphens: auto; }
+
+/* highlight cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 18px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #000; }
+.card-body { padding: 4px 16px 16px; }
+.card-body p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+/* videos */
+.videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 26px; }
+.video video { width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; background: #000; }
+.video p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+.tag {
+  display: inline-block; min-width: 2.2em; text-align: center; padding: 1px 7px; margin-right: 6px; border-radius: 6px;
+  background: var(--pink); color: #fff; font-size: 0.85rem;
+}
+
+/* figure gallery */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 18px; }
+.gallery a {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+}
+.gallery img { width: 100%; height: 260px; object-fit: contain; background: #fff; padding: 8px; }
+.gallery span { padding: 8px 12px; font-weight: 600; font-size: 0.92rem; background: var(--panel); color: var(--ink); }
+
+/* paper */
+.pdf object { width: 100%; height: 85vh; border: 1px solid var(--line); border-radius: 10px; }
+
+/* bibtex */
+pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; font-size: 0.85rem; }
+
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; padding: 24px 0 40px; text-align: center; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .lead { text-align: left; }
+  .videos { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+}
