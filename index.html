@@ -157,6 +157,12 @@
 }</code></pre>
   </section>
 
+  <section class="wrap" id="visitors">
+    <h2>Visitors</h2>
+    <p class="visitor-line" id="visitor-line" hidden>You are the <strong id="visitor-no"></strong> visitor to this project.</p>
+    <div class="visitor-map" id="visitor-map"></div>
+  </section>
+
 </main>
 
 <footer>
@@ -164,6 +170,32 @@
     <p>CREATE Lab, &Eacute;cole Polytechnique F&eacute;d&eacute;rale de Lausanne (EPFL).</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var NS = 'huijiang-wang-selfsensing-hand', KEY = 'visitors', STORE = 'ssh-visitor-no';
+  function ordinal(n) {
+    var s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+    return n.toLocaleString('en-US') + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+  function show(n) {
+    if (!(n > 0)) return;
+    document.getElementById('visitor-no').textContent = ordinal(n);
+    document.getElementById('visitor-line').hidden = false;
+  }
+  var mine = null;
+  try { mine = parseInt(localStorage.getItem(STORE), 10); } catch (e) {}
+  if (mine > 0) { show(mine); return; }                       // returning visitor keeps their number
+  var live = /github\.io$/.test(location.hostname);           // do not count local previews
+  fetch('https://abacus.jasoncameron.dev/' + (live ? 'hit/' : 'get/') + NS + '/' + KEY)
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      show(d.value);
+      if (live && d.value > 0) { try { localStorage.setItem(STORE, d.value); } catch (e) {} }
+    })
+    .catch(function () {});
+})();
+</script>
 
 </body>
 </html>

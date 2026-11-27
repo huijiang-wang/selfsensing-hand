@@ -96,6 +96,12 @@ figcaption { color: var(--muted); font-size: var(--fs-body); margin-top: 10px; t
 /* bibtex */
 pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; font-size: var(--fs-body); }
 
+/* visitors */
+.visitor-line { text-align: center; margin: 0 0 18px; }
+.visitor-line strong { color: var(--pink); }
+.visitor-map { display: flex; justify-content: center; }
+.visitor-map:empty { display: none; }
+
 footer { border-top: 1px solid var(--line); color: var(--muted); font-size: var(--fs-body); padding: 24px 0 40px; text-align: center; }
 
 @media (max-width: 640px) {
