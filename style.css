@@ -99,8 +99,8 @@ pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10
 /* visitors */
 .visitor-line { text-align: center; margin: 0 0 18px; }
 .visitor-line strong { color: var(--pink); }
-.visitor-map { display: flex; justify-content: center; }
-.visitor-map:empty { display: none; }
+.visitor-map { max-width: 560px; margin: 0 auto; }
+.visitor-map img { margin: 0 auto; }
 
 footer { border-top: 1px solid var(--line); color: var(--muted); font-size: var(--fs-body); padding: 24px 0 40px; text-align: center; }
 
