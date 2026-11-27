@@ -96,6 +96,14 @@ figcaption { color: var(--muted); font-size: var(--fs-body); margin-top: 10px; t
 /* bibtex */
 pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; font-size: var(--fs-body); }
 
+.bib { position: relative; }
+.copy-btn {
+  position: absolute; top: 10px; right: 10px; padding: 4px 12px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: var(--fs-body); font-weight: 600; color: var(--blue); background: var(--bg);
+  border: 1.5px solid var(--blue);
+}
+.copy-btn:hover { background: var(--blue); color: #fff; }
+
 /* visitors */
 .visitor-line { text-align: center; margin: 0 0 18px; }
 .visitor-line strong { color: var(--pink); }

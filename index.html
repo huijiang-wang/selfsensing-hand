@@ -142,19 +142,22 @@
 
   <section class="wrap" id="bibtex">
     <h2>BibTeX</h2>
-<pre><code>@article{wang2026selfsensing,
-  title   = {Self-Sensing Compliant Anthropomorphic Hand for Speed-Dictated
-             Shared Force Control in Teleoperation},
-  author  = {Wang, Huijiang and Zhang, Yu and Chen, Rui and Bonato, Tristan and
-             Eom, Jaemin and Junge, Kai and Pan, Cheng and Dai, Benhui and
-             Xie, Yue and Hughes, Josie},
-  journal = {arXiv preprint arXiv:2611.32937},
-  year    = {2026},
-  eprint  = {2611.32937},
+<div class="bib">
+<button class="copy-btn" type="button" id="copy-bib" aria-label="Copy BibTeX">Copy</button>
+<pre><code id="bib-text">@article{wang2026selfsensing,
+  title         = {Self-Sensing Compliant Anthropomorphic Hand for Speed-Dictated
+                   Shared Force Control in Teleoperation},
+  author        = {Wang, Huijiang and Zhang, Yu and Chen, Rui and Bonato, Tristan and
+                   Eom, Jaemin and Junge, Kai and Pan, Cheng and Dai, Benhui and
+                   Xie, Yue and Hughes, Josie},
+  journal       = {arXiv preprint arXiv:2611.32937},
+  year          = {2026},
+  eprint        = {2611.32937},
   archivePrefix = {arXiv},
   primaryClass  = {cs.RO},
-  url     = {https://arxiv.org/abs/2611.32937}
+  url           = {https://arxiv.org/abs/2611.32937}
 }</code></pre>
+</div>
   </section>
 
   <section class="wrap" id="visitors">
@@ -174,6 +177,27 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var btn = document.getElementById('copy-bib');
+  btn.addEventListener('click', function () {
+    var text = document.getElementById('bib-text').textContent;
+    function done(ok) {
+      btn.textContent = ok ? 'Copied!' : 'Press Ctrl+C';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+    }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('bib-text'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      done(ok);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>
 <script>
 (function () {
   var NS = 'huijiang-wang-selfsensing-hand', KEY = 'project-visitors', STORE = 'ssh-visitor-no';
